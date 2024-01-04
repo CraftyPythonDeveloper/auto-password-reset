@@ -18,7 +18,7 @@ class ResetPasswordPage(BasePage):
         reset_password_element = reset_password_element or self.find_in_text(keywords=self.keywords)
 
         if not reset_password_element:
-            logger.info("Unable to find the reset password link or text")
+            logger.info(f"Unable to find the reset password link or text for {self.email} on {self.url}")
             return
 
         reset_password_element.click()
@@ -27,13 +27,13 @@ class ResetPasswordPage(BasePage):
         email_element = self.get_email_by_type()
 
         if not email_element:
-            logger.info("Unable to find the email input box..")
+            logger.info(f"Unable to find the email input box for {self.email} on {self.url}")
 
         email_element.send_keys(self.email)
         self.sleep(1)
         email_element.send_keys(Keys.ENTER)
 
-        logger.info("Sent password reset link..")
+        logger.info(f"Sent password reset link successfully for {self.email} on {self.url}")
 
         self.driver.close()
 
