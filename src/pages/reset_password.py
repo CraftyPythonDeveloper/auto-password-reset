@@ -36,3 +36,8 @@ class ResetPasswordPage(BasePage):
         logger.info("Sent password reset link..")
 
         self.driver.close()
+
+
+if __name__ == "__main__":
+    reset_page = ResetPasswordPage("https://account.leadiq.com/common/", "test@gmail.com")
+    reset_page.reset_password()
